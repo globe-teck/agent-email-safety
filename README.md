@@ -13,6 +13,7 @@ All examples are generic (`example.com`). There are no real domains, addresses, 
 | [docs/03-code-email-guard.md](docs/03-code-email-guard.md) | Keep code/sign-in/2FA mail away from bot inboxes, plus four cPanel/Exim gotchas |
 | [docs/04-safe-cpanel-connector.md](docs/04-safe-cpanel-connector.md) | Allowlisted, dry-run-by-default connector design |
 | [docs/05-results.md](docs/05-results.md) | What was tested, what passed, and what is still pending |
+| [docs/06-credential-near-miss.md](docs/06-credential-near-miss.md) | Finding: a token stored in the keychain's account field, how it was caught, and rotation |
 | [docs/examples/](docs/examples/) | Generic Exim filter snippets |
 
 ## The core rule

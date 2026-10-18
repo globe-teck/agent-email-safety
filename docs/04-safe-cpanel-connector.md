@@ -15,7 +15,4 @@ The goal is a tool that lets an agent manage mail filters without being able to 
 Things like removing a forwarder are done as **single, reviewed calls outside the tool**, not by adding a delete capability.
 
 ## Lesson learned
-The token was once pasted into the keychain *account* field instead of the secret field, which left it in a place that's easy to display. Takeaways:
-
-- Validate the credential's shape (length, character set, prefix) **without printing it**.
-- **Rotate after any exposure**, even a local one.
+A token was once stored in the wrong keychain field. See [06-credential-near-miss.md](06-credential-near-miss.md) for what happened and what we learned.
