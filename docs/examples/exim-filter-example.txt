@@ -1,0 +1,30 @@
+# Exim filter
+# Generic example only. Replace the *_AT_EXAMPLE_COM placeholders with real addresses.
+
+# 1) Guard: code/sign-in/security mail stays with the human. Runs first.
+if $header_subject: contains "verification code"
+   or $header_subject: contains "sign-in"
+   or $header_subject: contains "one-time"
+   or $header_subject: contains "2FA"
+   or $header_subject: contains "password"
+   or $header_subject: contains "security code"
+then
+   save "INBOX"
+   finish
+endif
+
+# 2) Allowlist filter that ends in finish: it must also redirect (Gotcha 2)
+if $header_from: contains "partner.example.com"
+then
+   save "INBOX"
+   deliver "AGENT_ADDRESS_AT_EXAMPLE_COM"
+   finish
+endif
+
+# 3) Redirect that replaces the address-level forwarder (Gotcha 1).
+#    The explicit save keeps the local copy (Gotcha 3); INBOX, not .INBOX (Gotcha 4).
+if $header_to: contains "INBOX_ADDRESS_AT_EXAMPLE_COM"
+then
+   save "INBOX"
+   deliver "AGENT_ADDRESS_AT_EXAMPLE_COM"
+endif
